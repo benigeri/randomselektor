@@ -4,8 +4,4 @@
   <input type="text" name="name" id="new_entry_name">
   <input type="submit" value="Add">
 </form>
-<ul>
-  <% for entry in @entries.models: %>
-    <li><%= entry.get('name') %></li>
-  <% end %>
-</ul>
+<ul id="entries"></ul>
