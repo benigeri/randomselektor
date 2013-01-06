@@ -3,7 +3,9 @@ window.Randomselektor =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: ->
+    new Randomselektor.Routers.Entries
+    Backbone.history.start()
 
 $(document).ready ->
   Randomselektor.initialize()
