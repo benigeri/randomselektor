@@ -1,5 +1,9 @@
 <h1>Random Selektor!</h1>
 
+<form id="new_entry">
+  <input type="text" name="name" id="new_entry_name">
+  <input type="submit" value="Add">
+</form>
 <ul>
   <% for entry in @entries.models: %>
     <li><%= entry.get('name') %></li>
