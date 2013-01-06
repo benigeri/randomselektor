@@ -17,8 +17,19 @@ class Randomselektor.Views.EntriesIndex extends Backbone.View
   appendEntry: (entry) ->
     view = new Randomselektor.Views.Entry(model: entry)
     $('#entries').append(view.render().el)
-    $('#new_entry')[0].reset()
+    # $('#new_entry')[0].reset()
 
   createEntry: ->
     event.preventDefault()
-    @collection.create name: $('#new_entry_name').val()
+    attributes = name: $('#new_entry_name').val()
+    @collection.create attributes,
+      wait:true
+      success: -> $('#new_entry')[0].reset()
+      error: @handleError
+
+  handleError: (entry, response) ->
+    if response.status == 422
+      errors = $.parseJSON(response.responseText).errors
+      for attributes, messages of errors
+        alert "#{attributes} #{message}" for message in messages
+
