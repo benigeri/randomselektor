@@ -4,6 +4,11 @@ class Randomselektor.Views.EntriesIndex extends Backbone.View
 
   events:
     'submit #new_entry': 'createEntry'
+    'click #select': 'selectEntry'
+
+  selectEntry: (event) ->
+    event.preventDefault()
+    @collection.selectEntry()
 
   initialize: ->
     @collection.on('reset', @render, this)
